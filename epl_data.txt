@@ -1,0 +1,37 @@
+{
+  "EPLTable": [
+    {
+      "PutRequest": {
+        "Item": {
+          "Team": {"S": "Liverpool"},
+          "Season": {"S": "2023-2024"},
+          "Points": {"N": "18"},
+          "GoalsScored": {"N": "22"},
+          "GoalsAgainst": {"N": "15"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "Team": {"S": "Tottenham Hotspur"},
+          "Season": {"S": "2023-2024"},
+          "Points": {"N": "19"},
+          "GoalsScored": {"N": "20"},
+          "GoalsAgainst": {"N": "12"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "Team": {"S": "Chelsea"},
+          "Season": {"S": "2023-2024"},
+          "Points": {"N": "15"},
+          "GoalsScored": {"N": "17"},
+          "GoalsAgainst": {"N": "14"}
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+pipeline {
+    agent any
+    environment {
+        dockerhub=credentials('DockerHubCredentials')
+    }
+
+    stages {
+        stage('Hello') {
+            steps {
+                sh '''
+                       docker build -t shynedevs/adservice:2 $WORKSPACE/app/adservice/
+                       echo $dockerhub_PSW | docker login -u $dockerhub_USR --password-stdin
+                       docker push shynedevs/adservice:2
+                       docker rmi shynedevs/adservice:2
+                       '''
+               
+            }
+        }
+        }
+                
+    }

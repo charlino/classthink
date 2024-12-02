@@ -1,0 +1,22 @@
+mkdir app
+    cd app/
+    git clone https://github.com/slimprepdevops/template-webserver .
+    sudo mkdir -p /var/www/my_domain/html
+    sudo chown -R $USER:$USER /var/www/my_domain/html
+    sudo chmod -R 755 /var/www/my_domain
+    sudo cp -R  /home/ubuntu/app/* /var/www/my_domain/html/
+    sudo bash -c 'cat > /etc/nginx/sites-available/my_domain <<EOF
+server {
+    listen 80;
+    listen [::]:80;
+    root /var/www/my_domain/html;
+    index index.html index.htm index.nginx-debian.html;
+    server_name my_domain www.my_domain;
+    location / {
+        try_files \$uri \$uri/ =404;
+    }
+}
+EOF'
+    sudo ln -s /etc/nginx/sites-available/my_domain /etc/nginx/sites-enabled/
+    sudo rm /etc/nginx/sites-enabled/default
+    sudo systemctl reload nginx
